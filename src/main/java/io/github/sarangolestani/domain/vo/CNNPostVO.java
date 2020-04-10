@@ -3,32 +3,23 @@ package io.github.sarangolestani.domain.vo;
 
 import java.util.Date;
 
-public class CnnPostsVO {
+public class CNNPostVO {
 
-    private long id;
     private Date publishDate;
     private String link;
     private String title;
     private String content;
 
-    public CnnPostsVO() {
+    public CNNPostVO() {
     }
 
-    public CnnPostsVO(long id, Date publishDate, String link, String title, String content) {
-        this.id = id;
+    public CNNPostVO( Date publishDate, String link, String title, String content) {
         this.publishDate = publishDate;
         this.link = link;
         this.title = title;
         this.content = content;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public Date getPublishDate() {
         return publishDate;

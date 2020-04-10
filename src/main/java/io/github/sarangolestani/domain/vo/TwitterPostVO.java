@@ -2,32 +2,23 @@ package io.github.sarangolestani.domain.vo;
 
 import java.util.Date;
 
-public class TwitterPostsVO {
+public class TwitterPostVO {
 
-    private long id;
     private Date publishDate;
     private String link;
     private String title;
     private String content;
 
-    public TwitterPostsVO() {
+    public TwitterPostVO() {
     }
 
-    public TwitterPostsVO(long id, Date publishDate, String link, String title, String content) {
-        this.id = id;
+    public TwitterPostVO( Date publishDate, String link, String title, String content) {
         this.publishDate = publishDate;
         this.link = link;
         this.title = title;
         this.content = content;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public Date getPublishDate() {
         return publishDate;
