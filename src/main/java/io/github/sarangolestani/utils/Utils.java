@@ -29,7 +29,7 @@ public class Utils {
             tonality = toneAnalysis.getSentencesTone().get(0).getTones().get(0).getToneName();
         }
         else {
-            tonality = "confudesFeeling";
+            tonality = "MixedFeelings";
         }
 
         return tonality;
