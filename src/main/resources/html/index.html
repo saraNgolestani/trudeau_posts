@@ -71,29 +71,10 @@
 	    <a href="#">Back to top</a>
 	  </p>
 	</footer>
-
 	<script src="scripts.js"></script>
 	<script>
-      var xmlhttp = new XMLHttpRequest();
-      var url = "http://localhost:8080/content/cnn";
-      xmlhttp.onreadystatechange = function () {
-
-          var response = JSON.parse(this.responseText);
-		  fetch_cnn_data(response);
-
-      };
-      xmlhttp.open("GET", url, true);
-      xmlhttp.send();
-	</script>
-	<script>
-        var xmlhttp = new XMLHttpRequest();
-        var url = "http://localhost:8080/content/twitter";
-        xmlhttp.onreadystatechange = function () {
-                var response = JSON.parse(this.responseText);
-                fetch_twitter_data(response);
-        };
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
+        getCnnData();
+        getTwitterData();
 	</script>
 </body>
 </body>
