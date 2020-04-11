@@ -1,3 +1,32 @@
+function getCnnData(){
+    var xmlhttp = new XMLHttpRequest();
+    var url = "http://localhost:8080/content/cnn";
+    xmlhttp.onreadystatechange = function () {
+
+        var response = JSON.parse(this.responseText);
+        fetch_cnn_data(response);
+
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    setTimeout(()=>{
+        getCnnData();
+    },300000);
+}
+
+function getTwitterData(){
+    var xmlhttp = new XMLHttpRequest();
+    var url = "http://localhost:8080/content/twitter";
+    xmlhttp.onreadystatechange = function () {
+        var response = JSON.parse(this.responseText);
+        fetch_twitter_data(response);
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    setTimeout(()=>{
+        getTwitterData();
+    },300000);
+}
 function fetch_twitter_data(arr) {
   for (var i = 0; i < arr.length; i++) {
     var newRow =
