@@ -2,6 +2,11 @@
 This application would crawl into [CNN](https://edition.cnn.com/search/) and [Twitter](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/intro-to-tweet-json) in order to find last 25 posts and news of J. Trudeau and displays them.
 the webdesigne of this app would be refreshed every 5minutes in order to fetch the most recent contents.
 
+## Base endpoints ##
+The endpoints that the index.html file currently uses.
+> - /content/twitter
+> - /content/cnn
+
 # Features:
  The coolest feature of this app is that it can analysis the tonality of the text using the GET API of [IBM ToneAnalyzer](https://tone-analyzer-demo.ng.bluemix.net/?_ga=2.184625833.1243136591.1586555423-1644152405.1586250967).
 
@@ -23,3 +28,11 @@ This feature can help us imidiately undrestand the semantic of te content we are
 > - localhost:8080/content/{query}/cnn/{maxPosition}
 > - localhost:8080/content/{username}/twitter/{maxPosition}
 
+# Techs and Frameworks
+> - Spring Boot
+> - version java
+> - IMB Tone Analyzer
+
+# Deployment
+To run this project you need to import all maven dependecies.
+its better to first clean the maven catch `mvn clean` and then install them all `mvn idea:idea` and lastly, package it `mvn package` :).
