@@ -8,18 +8,29 @@ public class CNNPostVO {
     private Date publishDate;
     private String link;
     private String title;
+    private String tonality;
     private String content;
 
     public CNNPostVO() {
     }
 
-    public CNNPostVO( Date publishDate, String link, String title, String content) {
+    public CNNPostVO(Date publishDate, String link, String title, String content, String tonality) {
         this.publishDate = publishDate;
         this.link = link;
         this.title = title;
+        this.tonality = tonality;
         this.content = content;
+
     }
 
+
+    public String getTonality() {
+        return tonality;
+    }
+
+    public void setTonality(String tonality) {
+        this.tonality = tonality;
+    }
 
     public Date getPublishDate() {
         return publishDate;

@@ -33,7 +33,7 @@ public class CNNObjectMapper {
         vo.setLink(post.getLink());
         vo.setTitle(post.getHeadline());
         vo.setPublishDate(post.getLastPublished());
-
+        vo.setTonality(post.getTonality());
 
         return vo;
     }

@@ -3,6 +3,7 @@ package io.github.sarangolestani.services;
 import com.google.gson.Gson;
 import io.github.sarangolestani.domain.TwitterPost;
 import io.github.sarangolestani.domain.srv.TwitterSearchResult;
+import io.github.sarangolestani.utils.Utils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -12,6 +13,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
@@ -25,6 +27,11 @@ import java.util.List;
 
 @Component
 public class TwitterApiService extends AbstractApiServices<TwitterPost> {
+    @Value("${tone.analyser.iam.apikey}")
+    String apiKey;
+    @Value("${tone.analyser.url}")
+    String ibmUrl;
+
     private HttpClient defaultHttpClient;
     private Gson gson;
 
@@ -53,8 +60,11 @@ public class TwitterApiService extends AbstractApiServices<TwitterPost> {
 
             if (tweets.size() != 0) {
                 for (Element tweet : tweets) {
-                    TwitterPost post = getTwitts(tweet, query);
-                    twitterPosts.add(post);
+                    if(tweet != null){
+                        TwitterPost post = getTonality(getTwitts(tweet, query));
+
+                        twitterPosts.add(post);
+                    }
                     if(maxPosition != 0){
                         if(twitterPosts.size() >= maxPosition)
                             break outerLace;
@@ -117,6 +127,12 @@ public class TwitterApiService extends AbstractApiServices<TwitterPost> {
 
         return post;
 
+    }
+
+    private TwitterPost getTonality(TwitterPost post){
+        String tonality = Utils.tonality(Utils.getLimitedSentences(post.getText(), 3), apiKey, ibmUrl);
+        post.setTonality(tonality);
+        return post;
     }
 
 }

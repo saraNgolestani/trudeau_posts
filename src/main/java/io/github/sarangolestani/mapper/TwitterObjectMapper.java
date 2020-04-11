@@ -11,6 +11,7 @@ public class TwitterObjectMapper {
         vo.setContent(post.getText());
         vo.setTitle(post.getText().substring(0, Math.min(15, post.getText().length())));
         vo.setLink(post.getLink());
+        vo.setTonality(post.getTonality());
         vo.setPublishDate(post.getDate());
 
         return vo;

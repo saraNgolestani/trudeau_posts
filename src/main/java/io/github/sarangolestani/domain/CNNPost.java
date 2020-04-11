@@ -7,7 +7,18 @@ public class CNNPost {
     private String headline;
     private String body;
     private String link;
+    private String tonality;
     private Date lastPublished;
+
+
+
+    public String getTonality() {
+        return tonality;
+    }
+
+    public void setTonality(String tonality) {
+        this.tonality = tonality;
+    }
 
     public String getHeadline() {
         return headline;

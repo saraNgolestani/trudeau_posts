@@ -7,8 +7,16 @@ public class TwitterPost {
     private String link;
     private String username;
     private String text;
+    private String tonality;
     private Date date;
 
+    public String getTonality() {
+        return tonality;
+    }
+
+    public void setTonality(String tonality) {
+        this.tonality = tonality;
+    }
 
     public String getLink() {
         return link;

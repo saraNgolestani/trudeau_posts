@@ -7,18 +7,27 @@ public class TwitterPostVO {
     private Date publishDate;
     private String link;
     private String title;
+    private String tonality;
     private String content;
 
     public TwitterPostVO() {
     }
 
-    public TwitterPostVO( Date publishDate, String link, String title, String content) {
+    public TwitterPostVO(Date publishDate, String link, String title, String tonality, String content) {
         this.publishDate = publishDate;
         this.link = link;
         this.title = title;
+        this.tonality = tonality;
         this.content = content;
     }
 
+    public String getTonality() {
+        return tonality;
+    }
+
+    public void setTonality(String tonality) {
+        this.tonality = tonality;
+    }
 
     public Date getPublishDate() {
         return publishDate;
