@@ -1,11 +1,6 @@
 package io.github.sarangolestani.services;
 
 import com.google.gson.Gson;
-import com.ibm.cloud.sdk.core.http.HttpConfigOptions;
-import com.ibm.cloud.sdk.core.security.IamAuthenticator;
-import com.ibm.watson.tone_analyzer.v3.ToneAnalyzer;
-import com.ibm.watson.tone_analyzer.v3.model.ToneAnalysis;
-import com.ibm.watson.tone_analyzer.v3.model.ToneOptions;
 import io.github.sarangolestani.domain.CNNPost;
 import io.github.sarangolestani.domain.srv.CNNSearchResult;
 import io.github.sarangolestani.mapper.CNNObjectMapper;
@@ -60,8 +55,14 @@ public class CNNApiService extends AbstractApiServices<CNNPost> {
 
     private List<CNNPost> getTonality(List<CNNPost> cnnPosts){
         for(CNNPost cnnPost:cnnPosts){
-            String toneAnalysis = Utils.tonality(Utils.getLimitedSentences(cnnPost.getBody(), 3), apiKey, ibmUrl);
-            cnnPost.setTonality(toneAnalysis);
+            try{
+                String toneAnalysis = Utils.tonality(Utils.getLimitedSentences(cnnPost.getBody(), 3), apiKey, ibmUrl);
+                cnnPost.setTonality(toneAnalysis);
+            }catch (Exception e){
+                cnnPost.setTonality("Sorry, free (IBM) Api call quota exceeded! try tomorrow :) ");
+
+            }
+
         }
 
         return cnnPosts;

@@ -130,8 +130,14 @@ public class TwitterApiService extends AbstractApiServices<TwitterPost> {
     }
 
     private TwitterPost getTonality(TwitterPost post){
-        String tonality = Utils.tonality(Utils.getLimitedSentences(post.getText(), 3), apiKey, ibmUrl);
-        post.setTonality(tonality);
+        try {
+            String tonality = Utils.tonality(Utils.getLimitedSentences(post.getText(), 3), apiKey, ibmUrl);
+            post.setTonality(tonality);
+        }catch (Exception e){
+            post.setTonality("Sorry, free (IBM) Api call quota exceeded! try tomorrow :) ");
+
+        }
+
         return post;
     }
 
